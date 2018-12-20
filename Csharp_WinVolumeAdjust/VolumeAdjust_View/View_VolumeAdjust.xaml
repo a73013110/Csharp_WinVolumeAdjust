@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="Csharp_WinVolumeAdjust.VolumeAdjust_View.View_VolumeAdjust"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Csharp_WinVolumeAdjust.VolumeAdjust_View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ProgressBar.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <materialDesign:Card DockPanel.Dock="Top" Margin="8">
+            <StackPanel Orientation="Vertical" Margin="16">
+                <TextBlock FontSize="16" FontWeight="Bold">系統播放裝置</TextBlock>
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                        <ComboBox x:Name="DeviceListBox" ItemsSource="{Binding volumeAdjustModel.View_AudioItems}" 
+                                             Margin="0 8 0 8" HorizontalAlignment="Left" FontSize="14" SelectionChanged="DeviceListBox_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate DataType="local:View_AudioItem">
+                                    <TextBlock Text="{Binding Name}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel DockPanel.Dock="Right" VerticalAlignment="Center" Margin="8 0 0 0">
+                        <ProgressBar x:Name="MainVolume_PB" Height="15" Maximum="1" SmallChange="0.0001" />
+                    </StackPanel>
+                </DockPanel>
+                <Grid RenderTransformOrigin="4,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon x:Name="packIcon" Grid.Column="0" Kind="Audio" VerticalAlignment="Stretch" Width="25" Height="25" HorizontalAlignment="Left" />
+                    <Slider x:Name="MainVolume_Slider" Grid.Column="1" Thumb.DragStarted="MainVolume_Slider_DragStarted" Thumb.DragCompleted="MainVolume_Slider_DragCompleted"
+                                Minimum="0" Maximum="100" TickPlacement="BottomRight" ValueChanged="Volume_Slider_ValueChanged" IsSnapToTickEnabled="True" VerticalAlignment="Top" />
+                    <StackPanel Grid.Column="2" Orientation="Vertical">
+                        <materialDesign:Card Width="{Binding Width, ElementName=packIcon}" Height="{Binding Height, ElementName=packIcon}" UniformCornerRadius="14">
+                            <ProgressBar x:Name="MainVolumeAdjust_PB" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="-1" Margin="1" Width="Auto" Height="Auto" />
+                        </materialDesign:Card>
+                        <TextBlock Text="{Binding Value, ElementName=MainVolume_Slider}" Margin="0,-24, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="11" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </materialDesign:Card>
+        <!--<materialDesign:Card DockPanel.Dock="Bottom" Margin="8" Background="{DynamicResource MaterialDesignBackground}">
+            <Expander HorizontalAlignment="Stretch" Header="Expander Example 2a">
+                <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
+                    <TextBlock Text="Your Content" />
+                    <TextBlock Opacity=".68" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." TextWrapping="Wrap" />
+                </StackPanel>
+            </Expander>
+            --><!--<Border Background="{DynamicResource MaterialDesignDivider}" Height="1" HorizontalAlignment="Stretch" SnapsToDevicePixels="True" />--><!--
+        </materialDesign:Card>-->
+        <materialDesign:Transitioner DockPanel.Dock="Bottom" SelectedIndex="0" AutoApplyTransitionOrigins="True" SelectionChanged="Transitioner_SelectionChanged">
+            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft}">
+                <local:Slide0_VolumeChannelAdjustComfirm x:Name="Slide0_VolumeChannelAdjustComfirm" />
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect SlideInFromTop}">
+                <local:Slide1_VolumeChannelAdjust x:Name="Slide1_VolumeChannelAdjust" />
+            </materialDesign:TransitionerSlide>
+        </materialDesign:Transitioner>
+    </DockPanel>
+</UserControl>

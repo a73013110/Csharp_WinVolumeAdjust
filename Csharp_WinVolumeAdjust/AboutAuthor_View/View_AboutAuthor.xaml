@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Csharp_WinVolumeAdjust.AboutAuthor_View.View_AboutAuthor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Csharp_WinVolumeAdjust.AboutAuthor_View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="330" d:DesignWidth="600">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Popupbox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/Csharp_WinVolumeAdjust;component/Resources/AboutAuthor_BK.jpg" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Grid.Column="0" Margin="16 0 16 0" Padding="8 8 8 16" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <materialDesign:PackIcon Kind="GithubCircle" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="140" Height="140" />
+                <Button x:Name="github_btn" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                              HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,43" Grid.RowSpan="2" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="OpenInNew" />
+                </Button>
+                <StackPanel Grid.Row="1"  Margin="8 24 8 0">
+                    <TextBlock FontWeight="Bold" FontSize="14">Github</TextBlock>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">Surf my github to get more projects of mine</TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Column="1" Margin="16 0 16 0" Padding="8 8 8 16" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <materialDesign:PackIcon Kind="FacebookBox" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="140" Height="140" />
+                <Button x:Name="facebook_btn" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                              HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,43" Grid.RowSpan="2" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="OpenInNew" />
+                </Button>
+                <StackPanel Grid.Row="1"  Margin="8 24 8 0">
+                    <TextBlock FontWeight="Bold" FontSize="14">Facebook</TextBlock>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">Browse my facebook to get more Info about me</TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Column="2" Margin="16 0 16 0" Padding="8 8 8 16" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <materialDesign:PackIcon Kind="Gmail" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="140" Height="140" />
+                <Button x:Name="gmail_btn" Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                              HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,43" Grid.RowSpan="2" Click="Button_Click">
+                    <materialDesign:PackIcon Kind="Send" />
+                </Button>
+                <StackPanel Grid.Row="1"  Margin="8 24 8 0">
+                    <TextBlock FontWeight="Bold" FontSize="14">Gmail</TextBlock>
+                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">Give me comments through the mails</TextBlock>
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

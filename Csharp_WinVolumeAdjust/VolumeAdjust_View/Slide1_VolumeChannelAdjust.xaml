@@ -1,0 +1,49 @@
+﻿<UserControl x:Name="userControl" x:Class="Csharp_WinVolumeAdjust.VolumeAdjust_View.Slide1_VolumeChannelAdjust"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Csharp_WinVolumeAdjust.VolumeAdjust_View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignWidth="800" MinHeight="166">
+    <materialDesign:Card Margin="8">
+        <StackPanel Orientation="Vertical" Margin="16">
+            <TextBlock FontSize="16" FontWeight="Bold" Margin="0 0 0 8">進階音量調整</TextBlock>
+            <TextBlock FontSize="16">左聲道</TextBlock>
+            <Grid RenderTransformOrigin="4,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon x:Name="LeftVolume_packIcon" Grid.Column="0" Kind="Audio" VerticalAlignment="Stretch" Width="25" Height="25" HorizontalAlignment="Left" />
+                <Slider x:Name="LeftVolume_Slider" Grid.Column="1" Thumb.DragStarted="LeftVolume_Slider_DragStarted" Thumb.DragCompleted="LeftVolume_Slider_DragCompleted" 
+                                Minimum="0" Maximum="100" TickPlacement="BottomRight" IsSnapToTickEnabled="True" VerticalAlignment="Top" />
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+                    <materialDesign:Card Width="{Binding Width, ElementName=LeftVolume_packIcon}" Height="{Binding Height, ElementName=LeftVolume_packIcon}" UniformCornerRadius="14">
+                        <ProgressBar x:Name="LeftVolumeAdjust_PB" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="-1" Margin="1" Width="Auto" Height="Auto" />
+                    </materialDesign:Card>
+                    <TextBlock Text="{Binding Value, ElementName=LeftVolume_Slider}" Margin="0,-24, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="11" />
+                </StackPanel>
+            </Grid>
+            <TextBlock FontSize="16">右聲道</TextBlock>
+            <Grid RenderTransformOrigin="4,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon x:Name="RightVolume_packIcon" Grid.Column="0" Kind="Audio" VerticalAlignment="Stretch" Width="25" Height="25" HorizontalAlignment="Left" />
+                <Slider x:Name="RightVolume_Slider" Grid.Column="1" Thumb.DragStarted="RightVolume_Slider_DragStarted" Thumb.DragCompleted="RightVolume_Slider_DragCompleted" 
+                                Minimum="0" Maximum="100" TickPlacement="BottomRight" IsSnapToTickEnabled="True" VerticalAlignment="Top" />
+                <StackPanel Grid.Column="2" Orientation="Vertical">
+                    <materialDesign:Card Width="{Binding Width, ElementName=RightVolume_packIcon}" Height="{Binding Height, ElementName=RightVolume_packIcon}" UniformCornerRadius="14">
+                        <ProgressBar x:Name="RightVolumeAdjust_PB" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="-1" Margin="1" Width="Auto" Height="Auto" />
+                    </materialDesign:Card>
+                    <TextBlock Text="{Binding Value, ElementName=RightVolume_Slider}" Margin="0,-24, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="11" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </materialDesign:Card>
+</UserControl>
